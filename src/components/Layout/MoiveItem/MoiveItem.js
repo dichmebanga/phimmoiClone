@@ -28,7 +28,7 @@ function MoiveItem({ hide = false, slug, parentCallback, data }) {
                     <span className={cx('lable')}>{detailOneMovie.episode_current || 'Full'}</span>
                     <img
                         className={cx('img-film', `${hide && 'img-film-ofList'}`)}
-                        src={`http://img.ophim1.cc/uploads/movies/${data.thumb_url}`}
+                        src={`https://img.hiephanhthienha.com/uploads/movies/${data.thumb_url}`}
                         alt={'img'}
                     />
                     <i className={cx('icon-play')}></i>
