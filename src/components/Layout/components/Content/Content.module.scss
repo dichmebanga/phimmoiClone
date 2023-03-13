@@ -1,0 +1,41 @@
+.wrapper {
+    width: 670px;
+    margin: 0 10px 10px 0;
+}
+.title-box {
+    width: 670px;
+    margin: 0 0 10px 0;
+    font-family: Arial, Tahoma;
+    font-size: 14px;
+    color: #ff9601;
+    background-color: #1c1c1c;
+    font-weight: 300;
+}
+.title-box .tab {
+    cursor: pointer;
+    border-bottom: 3px solid #383838;
+    display: inline-block;
+    margin: 0 5px 0;
+    padding: 12px 5px;
+    color: #fff;
+}
+
+.title-box .tab.active {
+    color: #ff9601;
+    border-bottom: 2px solid #ff6901;
+    font-size: 25px;
+    font-family: 'roboto';
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.list-movie {
+    width: 670px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.list-movie-item {
+    height: 227.2px;
+    width: 160px;
+}

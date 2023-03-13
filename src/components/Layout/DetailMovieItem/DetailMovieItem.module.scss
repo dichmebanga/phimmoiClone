@@ -1,0 +1,223 @@
+.wrapper {
+    width: 670px;
+    float: left;
+    margin: 0 10px 20px 0;
+    background-color: rgb(24, 24, 24, 0.85);
+}
+.blockbody {
+    background-color: rgb(24, 24, 24, 0.85);
+    overflow: hidden;
+    padding: 10px;
+}
+.poster {
+    float: left;
+    width: 45%;
+    margin: 0 10px 10px 0;
+    position: relative;
+}
+.poster img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 400px;
+}
+.buttons {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 0px;
+}
+.poster .buttons li {
+    display: inline-block;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-see {
+    font-size: 16px;
+    color: #ffffff;
+    padding: 8px 10px;
+    margin: 0 5px;
+    border-radius: 0;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+
+    &:hover {
+        color: #fff;
+        background-color: #449d44;
+        border-color: #398439;
+    }
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+
+    &:hover {
+        color: #fff;
+        background-color: #c9302c;
+        border-color: #ac2925;
+    }
+}
+
+.text {
+    color: #707070;
+    overflow: hidden;
+}
+
+.text h1 {
+    margin: 0;
+    font-size: 36px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+.title {
+    font-weight: bold;
+    padding: 5px 0 0 0;
+    margin: 0 0 5px 0;
+    font-family: Tahoma;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    font-family: 'utm-cafeta';
+    font-size: 30px;
+    color: #ff9601;
+    display: block;
+}
+.text h2 {
+    margin: 0 0 10px 0;
+    font-size: 30px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+.real-name {
+    font-size: 12px;
+    color: #999;
+    display: block;
+}
+.slimScrollDiv {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: auto;
+    height: 250px;
+}
+.dinfo {
+    // overflow: hidden;
+    width: auto;
+    height: 250px;
+}
+.dinfo .col {
+    float: left;
+    width: 100%;
+    margin: 0 1% 0 0;
+    padding: 5px 8px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #bbb;
+    background: #222;
+}
+.dinfo dt {
+    float: left;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.col dt {
+    line-height: 26px;
+}
+.dinfo .film-status {
+    color: red;
+}
+.dinfo .col p {
+    color: #fff;
+    display: inline;
+}
+
+.btn-groups {
+    clear: both;
+    margin: 8px 0 0 0;
+    float: left;
+    padding: 5px 8px;
+    color: #bbb;
+    background: #222;
+}
+.detail {
+    margin: 60px 0 0 0;
+    font-size: 14px;
+    line-height: 1.5em;
+    color: #828282;
+}
+.tabs-content {
+    background: #282828;
+    padding: 10px;
+    margin: 0px 0 8px 0;
+}
+.heading {
+    font-size: 14px !important;
+    display: inline-block;
+    font-weight: 700;
+    color: #ccc;
+    text-transform: uppercase;
+    margin: 0px 0 8px 0;
+}
+
+.tab {
+    text-align: justify;
+}
+
+.film-note {
+    margin: 10px 0 0 0;
+    border: 1px solid #ff9601;
+    background: #000;
+    padding: 10px;
+    color: #dcdcdc;
+}
+
+.list-film {
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.star-item {
+    color: #ff9601;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.title-box {
+    background-color: rgb(24, 24, 24, 0.85);
+    padding-bottom: 5px;
+}
+.title-box > p {
+    display: inline;
+    margin: 0 5px 0;
+    padding: 12px 5px;
+    line-height: 1.1;
+    font-weight: 400;
+    font-size: 14px;
+    color: #fff;
+}

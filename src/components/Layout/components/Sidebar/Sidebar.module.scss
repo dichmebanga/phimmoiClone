@@ -1,0 +1,110 @@
+.wrapper {
+    width: 300px;
+    padding: 15px 11px;
+    height: 1550px;
+    background-color: rgba(24, 24, 24, 0.85);
+}
+.container {
+    // padding: 20px 20px 0px 10px;
+    margin: 0 0 10px 0;
+    overflow: hidden;
+}
+
+.capital {
+    margin: 0 0 10px 0;
+    padding: 0 0 5px 0;
+    color: #ff9601;
+    border-bottom: 2px dashed #5d5d5d;
+    font-size: 25px;
+    font-family: 'roboto';
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.list-film {
+    margin: 0 0 55px 0;
+}
+.film-item {
+    overflow: hidden;
+    margin: 5px 0 0 5px;
+}
+.film-item:nth-child(even) {
+    background-color: #141414;
+}
+.avatar {
+    object-fit: cover;
+    width: 75px;
+    height: 87px;
+    float: left;
+    margin: 3px 10px 0 0;
+    border: 1px solid #efefef;
+}
+.title {
+    height: 87px;
+}
+.name {
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.start {
+    margin-top: 3px;
+}
+.real-time {
+    font-size: 12px;
+    color: #bababa;
+}
+.tabs {
+    font-size: 14px;
+    color: #dcdcdc;
+}
+.tab {
+    width: 33.33%;
+    padding: 8px 0;
+    float: left;
+    border-radius: 0;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.active {
+    background-color: #5d5d5d;
+}
+
+.item {
+    position: relative;
+    padding: 5px 0 5px 35px;
+}
+
+.number-rank {
+    position: absolute;
+    background: #ff9601;
+    color: #fff;
+    font-weight: bold;
+    left: 5px;
+    top: 17px;
+    width: 23px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 15px;
+}
+.texts {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+
+    &:hover {
+        color: #ff9601;
+    }
+}
+.item:nth-child(even) {
+    background-color: #141414;
+}
+.count-view {
+    color: #bababa;
+    font-size: 12px;
+    margin: 3px 0 0 0;
+    font-style: italic;
+}

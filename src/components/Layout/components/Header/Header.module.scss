@@ -1,0 +1,192 @@
+.wrapper {
+    // background: rgba(0, 0, 0, 0.3);
+    padding: 0px 0 0 0;
+    font-family: 'roboto';
+    width: 100%;
+    height: 134px;
+    background: #292929;
+}
+.container {
+    padding: 0;
+    margin: 0 auto;
+    width: 980px;
+    margin: 5px 0;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.right-header {
+    // width: 728px;
+    display: flex;
+}
+
+.search {
+    width: 350px;
+    margin: 15px 92px 8px 0;
+    position: relative;
+}
+.search-input {
+    color: #000;
+    border: 1px solid #353535;
+    padding: 5px;
+    font-style: italic;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.search-icon {
+    position: absolute;
+    right: 4px;
+    top: 5px;
+    font-size: 20px;
+    color: #666666;
+}
+.search-result {
+    width: 400px;
+}
+.list-movie {
+    background: #1f1f1f none repeat scroll 0 0;
+    border-radius: 6px;
+    left: 3px;
+    list-style: outside none none;
+    padding: 5px 0 10px;
+    // position: absolute;
+    top: 42px;
+    width: 400px;
+    display: block;
+    z-index: 100;
+}
+.movie-title {
+    border-bottom: 1px dashed #333;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 8px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c2c2c2;
+
+    margin-left: 5px;
+}
+.movie-title strong {
+    color: #dacb46;
+}
+.movie-title span {
+    color: #dacb46;
+}
+.movie-list-end {
+    border-bottom: none;
+    background: rgba(0, 0, 0, 0) url(https://motphimtv.info/theme/css/image/icon_childparenthover.png) no-repeat scroll
+        right center;
+}
+
+.movie-list-end p {
+    color: #dacb46;
+
+    &:hover {
+        color: #337ab7;
+    }
+}
+.user-menu {
+    padding: 5px;
+    font-size: 14px;
+}
+.user-menu-icon {
+    color: #ffffff;
+    margin-right: 4px;
+}
+
+.user-menu ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.user-menu ul li p {
+    display: inline;
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        color: #ccc;
+    }
+}
+
+.suggest {
+    margin-top: 8px;
+    font-style: italic;
+    font-size: 12px;
+    color: #dcdcdc;
+}
+.main-menu {
+    width: 980px;
+    margin: 0 auto;
+
+    background: #292929;
+
+    // background:
+    padding: 0;
+}
+.menu-list {
+    padding: 0;
+    margin: 0 auto;
+    width: 980px;
+    display: flex;
+}
+.menu-item {
+    list-style-type: none;
+}
+.menu-item-list {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: normal;
+    padding: 15px 11.6px;
+    display: block;
+    font-size: 16px;
+    white-space: nowrap;
+}
+.menu-item-list:hover {
+    text-decoration: none;
+    color: #ff9601;
+}
+
+.active {
+    color: #ff9601;
+    border-bottom: 4px solid #ccc;
+}
+
+//menu
+
+.menu-result-category {
+    width: 800px;
+}
+.menu-result-country {
+    width: 700px;
+}
+.menu-result-year {
+    width: 200px;
+}
+.sub-menu {
+    z-index: 101;
+}
+.sub-menu-item {
+    width: 20%;
+    float: left;
+}
+.sub-menu-item-year {
+    width: 100%;
+}
+.sub-menu-item p {
+    display: block;
+    padding: 10px;
+    font-weight: normal;
+    text-transform: none;
+    font-size: 14px;
+    white-space: nowrap;
+    color: #ffffff;
+
+    &:hover {
+        color: #ff9601;
+    }
+}

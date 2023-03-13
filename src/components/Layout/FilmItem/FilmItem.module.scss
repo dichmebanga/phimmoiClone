@@ -1,0 +1,29 @@
+.movie-item {
+    border-bottom: 1px dashed #333;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    margin: 0 8px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #c2c2c2;
+
+    height: 48px;
+    line-height: 20px;
+    margin-top: 4px;
+
+    &:hover {
+        color: #337ab7;
+    }
+}
+.link-search {
+    line-height: 14px;
+    color: #c2c2c2;
+    text-decoration: none;
+}
+.movie-title {
+    font-size: 12px;
+    color: #999;
+}
