@@ -2,7 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
-    --primary: #ff8a00;
+    --primary: #ff9601;
+    --secondary: #ff8a00;
+
+    --solid: #ff6901;
+
+    --bgPrimary: #424242;
+    --bgSecondary: #292929;
+    --bgContent: #282828;
+    --bgActive: #141414;
+    --bgIntro: #222;
+    --bgAccent: #181818d9;
+    --bgDetaliMovie: #000000cc;
+
+    --text: #fff;
+    --textPrimary: #cccccc;
+    --textSecondary: #707070;
+    --textAccent: #dcdcdc;
+    --textContent: #666666;
+    --textIntro: #c2c2c2;
+    --textName: #bbbbbb;
+    --textHover: #4eb6ff;
 }
 
 * {

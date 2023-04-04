@@ -1,28 +1,22 @@
 // Pages
 import Home from '~/pages/Home';
-import ListMovie from '~/pages/ListMovie';
 import DetailMovie from '~/pages/DetailMovie';
 import SearchMovie from '~/pages/SearchMovie';
 import WatchingMovie from '~/pages/WatchingMovie';
-import { useContext } from 'react';
-import { ContextFilm } from 'src/Context/Context';
+import CategoryMovie from '~/pages/CategoryMovie';
+import ListMovie from '~/pages/ListMovie';
+import CountryMovie from '~/pages/CountryMovie';
 
-function Api() {
-    // const [state] = useContext(ContextFilm);
-    // const film = state.slug;
-    // console.log(film);
-    const publicRoutes = [
-        { path: '/', component: Home, layout: null },
-        { path: '/listMovie', component: ListMovie },
-        { path: '/detailMovie', component: DetailMovie, layout: null },
-        { path: '/searchMovie', component: SearchMovie },
-        { path: '/watchingMovie', component: WatchingMovie, layout: null },
-    ];
-
-    return publicRoutes;
-}
+const publicRoutes = [
+    { path: '/', component: Home },
+    { path: '/detailMovie/:film', component: DetailMovie },
+    { path: '/searchMovie/:key', component: SearchMovie },
+    { path: '/listMovie/:category', component: ListMovie },
+    { path: '/countries/:country', component: CountryMovie },
+    { path: '/watchingMovie/:film', component: WatchingMovie },
+    { path: '/categoryMovie/:category', component: CategoryMovie },
+];
 
 const privateRoutes = [];
-const publicRoutes = Api();
 
 export { publicRoutes, privateRoutes };

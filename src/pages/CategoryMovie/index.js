@@ -5,22 +5,39 @@ import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
 import { ContextFilm, setSlugMovie } from '~/context/Context';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from '../pages.module.scss';
-
-import { useParams } from 'react-router-dom';
-import { useSearchMovie } from '~/hooks/useSearchMovie';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Pagination from '~/components/Layout/components/Pagination/Pagination';
-
+import { useApiGetCategory } from '~/hooks/useApiGetCategory';
+import { API_ENDPOINTS } from '~/utils/apiClient';
 const cx = classNames.bind(styles);
-function SearchMovie() {
-    const { key } = useParams();
+function CategoryMovie() {
+    const [categoryMovie, setCategoryMovie] = useState(null);
+    const { category } = useParams();
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const pages = searchParams.get('page');
     const [page, setPage] = useState(1);
-
-    const { data, totalMovie } = useSearchMovie(key, page, 2021);
+    useEffect(() => setPage(pages), [pages]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (category === 'PHIM BỘ') setCategoryMovie(API_ENDPOINTS.SERIES);
+        if (category === 'PHIM LẺ') setCategoryMovie(API_ENDPOINTS.TRENDING);
+        if (category === 'PHIM THUYẾT MINH') setCategoryMovie(API_ENDPOINTS.SERIES);
+        if (category === 'TV SHOW') setCategoryMovie(API_ENDPOINTS.TVSHOWS);
+        if (category === 'PHIM VIETSUB') setCategoryMovie(API_ENDPOINTS.VIETSUB);
+        if (category === 'PHIM MỚI') setCategoryMovie(API_ENDPOINTS.NEW);
+    }, [category]);
+    const { data, totalMovie } = useApiGetCategory(`${categoryMovie}?page=${page}`);
     const [state, dispatch] = useContext(ContextFilm);
-    function handlePageChange(page) {
-        setPage(page);
+
+    function handlePageChange(newPage) {
+        setPage(newPage);
+        searchParams.set('page', newPage);
+        navigate({
+            search: searchParams.toString(),
+        });
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -34,7 +51,7 @@ function SearchMovie() {
         <>
             <div className={cx('wrapper')}>
                 <Header />
-                <IntroMovie contents={{ name: `KẾT QUẢ TÌM KIẾM: "${key}"` }} />
+                <IntroMovie contents={{ name: `/ ${category}` }} />
 
                 <div className={cx('container')}>
                     <div className={cx('content')}>
@@ -59,4 +76,4 @@ function SearchMovie() {
     );
 }
 
-export default SearchMovie;
+export default CategoryMovie;

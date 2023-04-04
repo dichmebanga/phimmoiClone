@@ -1,41 +1,26 @@
-import Header from '~/components/Layout/components/Header';
 import classNames from 'classnames/bind';
-import styles from './DetailMovie.module.scss';
-import Sidebar from '~/components/Layout/components/Sidebar';
-import DetailMovieItem from '~/components/Layout/DetailMovieItem';
-import IntroMovie from '~/components/Layout/IntroMovie/IntroMovie';
-import Footer from '~/components/Layout/components/Footer/Footer';
-import { useContext, useEffect, useState } from 'react';
-import { ContextFilm } from 'src/Context/Context';
-import axios from 'axios';
+import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
+import DetailMovieItem from '~/components/Layout/components/DetailMovieItem';
+import IntroMovie from '~/components/Layout/components/IntroMovie/IntroMovie';
+import Footer from '~/components/Layout/Footer/Footer';
+import Header from '~/components/Layout/Header';
+import Sidebar from '~/components/Layout/Sidebar';
+import { useGetDetailMovie } from '~/hooks/useGetDetailMovie';
+import styles from '../pages.module.scss';
 
 const cx = classNames.bind(styles);
 
 function DetailMovie() {
-    const [state] = useContext(ContextFilm);
-    const film = state.slug;
-    const [detailOneMovie, setDetailOneMovie] = useState({});
-    const [downloadMovie, setDownloadMovie] = useState({});
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const results = await axios(`https://ophim1.com/phim/${film}`);
-            const result = results.data.movie;
-            const download = results.data.episodes[0].server_data;
-            setDetailOneMovie(result);
-            setDownloadMovie(download);
-        };
-        fetchData();
-    }, [film]);
-    console.log('[DetailMovie]', state.slug);
-
+    const { film } = useParams();
+    const { data, name, intro } = useGetDetailMovie(film);
     return (
         <div className={cx('wrapper')}>
             <Header />
-            <IntroMovie movie={detailOneMovie} />
+            <IntroMovie contents={{ name, intro }} />
             <div className={cx('container')}>
-                <div className={cx('detail-movie')}>
-                    <DetailMovieItem movie={detailOneMovie} download={downloadMovie} />
+                <div className={cx('content')}>
+                    <DetailMovieItem movie={data} film={film} />
                 </div>
                 <Sidebar />
             </div>

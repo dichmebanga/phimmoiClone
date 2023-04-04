@@ -1,10 +1,10 @@
 import classNames from 'classnames/bind';
-import Content from 'src/components/Layout/components/Content';
-import Footer from 'src/components/Layout/components/Footer/Footer';
-import Header from 'src/components/Layout/components/Header';
-import Sidebar from 'src/components/Layout/components/Sidebar';
-import SliderMovie from 'src/components/Layout/SliderMovie';
-import styles from './Home.module.scss';
+import Content from '~/components/Layout/Content';
+import Footer from '~/components/Layout/Footer/Footer';
+import Header from '~/components/Layout/Header';
+import Sidebar from '~/components/Layout/Sidebar';
+import SliderMovie from '~/components/Layout/components/SliderMovie';
+import styles from '../pages.module.scss';
 
 const cx = classNames.bind(styles);
 

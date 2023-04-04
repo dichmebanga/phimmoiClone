@@ -1,0 +1,48 @@
+.container {
+    width: 980px;
+    margin-top: 28px;
+    margin-bottom: 11px;
+    margin: 28px 0 20px 15px;
+    color: var(--primary);
+    font-size: 25px;
+    font-family: 'roboto';
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.wrapper {
+    width: 980px;
+    margin-bottom: 30px;
+    position: relative;
+
+    .slideshow-arrow {
+        font-size: 45px;
+        display: inline-block;
+        color: #ffffff;
+        width: 50px;
+        height: 70px;
+        background: var(--bgDetaliMovie);
+        margin-top: -35px;
+        padding: 5px 13px;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .Slideshow_prev {
+        position: absolute;
+        left: 0px;
+        right: 0;
+        top: 50%;
+        bottom: 0;
+        z-index: 1000;
+    }
+    .Slideshow_next {
+        position: absolute;
+        right: 0px;
+        top: 50%;
+        bottom: 0;
+        z-index: 1000;
+    }
+}
