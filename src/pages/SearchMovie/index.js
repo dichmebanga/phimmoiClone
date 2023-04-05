@@ -4,7 +4,7 @@ import MoiveItem from '~/components/Layout/components/MoiveItem/MoiveItem';
 import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
-import { ContextFilm, setSlugMovie } from '~/context/Context';
+import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useContext, useState } from 'react';
 import styles from '../pages.module.scss';
 

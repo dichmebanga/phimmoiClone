@@ -7,7 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useContext, useRef } from 'react';
 import MoiveItem from '../MoiveItem/MoiveItem';
-import { ContextFilm, setSlugMovie } from '~/context/Context';
+import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 

@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ContextFilm, setSlugMovie } from '~/context/Context';
+import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import styles from './Sidebar.module.scss';

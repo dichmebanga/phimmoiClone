@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import MoiveItem from '../components/MoiveItem/MoiveItem';
 import Stylest from './Content.module.scss';
 import { useState, useContext } from 'react';
-import { ContextFilm, setSlugMovie } from '~/context/Context';
+import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 const cx = classNames.bind(Stylest);

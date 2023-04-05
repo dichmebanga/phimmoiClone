@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import FilmItem from '../components/FilmItem';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { ContextFilm, setSlugMovie } from '~/context/Context';
+import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import useDebounce from '~/hooks/useDebounce';
 import { axiosInstance } from '~/utils/axiosInStance';
 import { API_ENDPOINTS } from '~/utils/apiClient';
