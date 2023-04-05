@@ -1,4 +1,3 @@
-import { handleBreakpoints } from '@mui/system';
 import classNames from 'classnames/bind';
 import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -15,7 +14,7 @@ function Sidebar() {
     const movieNew = useApiGetCategory(API_ENDPOINTS.NEW);
     const movieTrending = useApiGetCategory(`${API_ENDPOINTS.TRENDING}?page=${page}`);
 
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
     const Date = ['Ngày', 'Tuần', 'Tháng'];
     const [active, setActive] = useState('Ngày');
     let count = 1;

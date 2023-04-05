@@ -55,7 +55,7 @@ function Search() {
         }
     };
 
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
 
     const callbackFunction = (childData) => {
         dispatch(setSlugMovie(childData));

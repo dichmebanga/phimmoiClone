@@ -1,5 +1,4 @@
 import classNames from 'classnames/bind';
-import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import DetailMovieItem from '~/components/Layout/components/DetailMovieItem';
 import IntroMovie from '~/components/Layout/components/IntroMovie/IntroMovie';

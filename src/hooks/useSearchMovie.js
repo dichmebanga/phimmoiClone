@@ -25,7 +25,7 @@ export const useSearchMovie = (q, page = 1, year) => {
         };
 
         fetchData();
-    }, [q, page]);
+    }, [q, page, year]);
 
     return { data, totalMovie, isLoading };
 };

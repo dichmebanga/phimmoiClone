@@ -17,7 +17,7 @@ const cx = classNames.bind(styles);
 
 function WatchingMovie() {
     const { film } = useParams();
-    const { data, episode, watchMovie, name, intro, isLoading } = useGetDetailMovie(film);
+    const { data, episode, watchMovie, name, intro } = useGetDetailMovie(film);
     const [watchingMovie, setWatchingMovie] = useState('');
     useEffect(() => {
         setWatchingMovie(watchMovie);
@@ -25,7 +25,6 @@ function WatchingMovie() {
     const handleEpisodeFilm = (movie) => {
         setWatchingMovie(movie.link_embed);
     };
-    // if (isLoading) return;
     return (
         <>
             <div className={cx('wrapper')}>

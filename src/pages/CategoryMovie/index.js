@@ -30,7 +30,7 @@ function CategoryMovie() {
         if (category === 'PHIM MỚI') setCategoryMovie(API_ENDPOINTS.NEW);
     }, [category]);
     const { data, totalMovie } = useApiGetCategory(`${categoryMovie}?page=${page}`);
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
 
     function handlePageChange(newPage) {
         setPage(newPage);

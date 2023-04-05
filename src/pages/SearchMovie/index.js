@@ -18,7 +18,7 @@ function SearchMovie() {
     const [page, setPage] = useState(1);
 
     const { data, totalMovie } = useSearchMovie(key, page, 2021);
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
     function handlePageChange(page) {
         setPage(page);
         window.scrollTo({

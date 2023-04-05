@@ -13,7 +13,7 @@ function Content() {
     const movieCartoon = useApiGetCategory(API_ENDPOINTS.CARTOON);
     const movieTvShows = useApiGetCategory(API_ENDPOINTS.TVSHOWS);
     const [active, setActive] = useState('Phim Bộ Mới Cập Nhật');
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
     const callbackFunction = (childData) => {
         dispatch(setSlugMovie(childData));
     };

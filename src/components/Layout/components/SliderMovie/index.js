@@ -24,7 +24,7 @@ function SliderMovie(props) {
     } = props;
     const { data } = useApiGetCategory(API_ENDPOINTS.SLIDER);
 
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
     const callbackFunction = (childData) => {
         dispatch(setSlugMovie(childData));
     };

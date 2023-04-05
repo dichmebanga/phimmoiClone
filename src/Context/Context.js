@@ -1,4 +1,3 @@
-// const { createContext, useReducer } = require('react');
 import { createContext, useReducer } from 'react';
 
 export const ContextFilm = createContext();

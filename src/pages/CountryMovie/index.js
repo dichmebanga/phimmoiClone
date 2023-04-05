@@ -23,7 +23,7 @@ function CountryMovie() {
     useEffect(() => setPage(pages), [pages]);
     const navigate = useNavigate();
     const { data, totalMovie } = useApiGetCategory(`${API_ENDPOINTS.COUNTRY}/${country}?page=${page}`);
-    const [state, dispatch] = useContext(ContextFilm);
+    const [, dispatch] = useContext(ContextFilm);
     function handlePageChange(newPage) {
         setPage(newPage);
         searchParams.set('page', newPage);
