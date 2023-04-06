@@ -5,6 +5,7 @@ import { useState, useContext } from 'react';
 import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
+import { SkeletonUi } from '../components/Skeleton';
 const cx = classNames.bind(Stylest);
 
 function Content() {
@@ -40,15 +41,23 @@ function Content() {
                 </div>
 
                 <div className={cx('list')}>
-                    {movieSeries.data?.slice(0, 16).map((movie) => (
-                        <MoiveItem
-                            parentCallback={callbackFunction}
-                            slug={movie.slug}
-                            key={movie._id}
-                            data={movie}
-                            hide={true}
-                        />
-                    ))}
+                    {(movieSeries.isLoading && (
+                        <>
+                            <SkeletonUi /> <SkeletonUi />
+                            <SkeletonUi />
+                        </>
+                    )) ||
+                        movieSeries.data
+                            ?.slice(0, 16)
+                            .map((movie) => (
+                                <MoiveItem
+                                    parentCallback={callbackFunction}
+                                    slug={movie.slug}
+                                    key={movie._id}
+                                    data={movie}
+                                    hide={true}
+                                />
+                            ))}
                 </div>
 
                 <div className={cx('title')}>
@@ -56,30 +65,44 @@ function Content() {
                 </div>
 
                 <div className={cx('list')}>
-                    {movieCartoon.data?.slice(0, 16).map((movie) => (
-                        <MoiveItem
-                            parentCallback={callbackFunction}
-                            key={movie._id}
-                            data={movie}
-                            slug={movie.slug}
-                            hide={true}
-                        />
-                    ))}
+                    {(movieCartoon.isLoading && (
+                        <>
+                            <SkeletonUi /> <SkeletonUi />
+                        </>
+                    )) ||
+                        movieCartoon.data
+                            ?.slice(0, 16)
+                            .map((movie) => (
+                                <MoiveItem
+                                    parentCallback={callbackFunction}
+                                    key={movie._id}
+                                    data={movie}
+                                    slug={movie.slug}
+                                    hide={true}
+                                />
+                            ))}
                 </div>
 
                 <div className={cx('title')}>
                     <p className={cx('tab', `active`)}>Được Yêu Thích</p>
                 </div>
                 <div className={cx('list')}>
-                    {movieTvShows.data?.slice(0, 16).map((movie) => (
-                        <MoiveItem
-                            key={movie._id}
-                            parentCallback={callbackFunction}
-                            data={movie}
-                            slug={movie.slug}
-                            hide={true}
-                        />
-                    ))}
+                    {(movieTvShows.isLoading && (
+                        <>
+                            <SkeletonUi /> <SkeletonUi />
+                        </>
+                    )) ||
+                        movieTvShows.data
+                            ?.slice(0, 16)
+                            .map((movie) => (
+                                <MoiveItem
+                                    key={movie._id}
+                                    parentCallback={callbackFunction}
+                                    data={movie}
+                                    slug={movie.slug}
+                                    hide={true}
+                                />
+                            ))}
                 </div>
             </div>
         </>

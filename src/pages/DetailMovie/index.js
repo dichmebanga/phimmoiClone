@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { useParams } from 'react-router-dom';
 import DetailMovieItem from '~/components/Layout/components/DetailMovieItem';
 import IntroMovie from '~/components/Layout/components/IntroMovie/IntroMovie';
+import { SkeletonDetail } from '~/components/Layout/components/Skeleton';
 import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
@@ -12,14 +13,14 @@ const cx = classNames.bind(styles);
 
 function DetailMovie() {
     const { film } = useParams();
-    const { data, name, intro } = useGetDetailMovie(film);
+    const { data, name, intro, isLoading } = useGetDetailMovie(film);
     return (
         <div className={cx('wrapper')}>
             <Header />
             <IntroMovie contents={{ name, intro }} />
             <div className={cx('container')}>
                 <div className={cx('content')}>
-                    <DetailMovieItem movie={data} film={film} />
+                    {(isLoading && <SkeletonDetail />) || <DetailMovieItem movie={data} film={film} />}
                 </div>
                 <Sidebar />
             </div>

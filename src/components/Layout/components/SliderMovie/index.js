@@ -10,6 +10,7 @@ import MoiveItem from '../MoiveItem/MoiveItem';
 import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
+import { SkeletonUi } from '~/components/Layout/components/Skeleton';
 
 const cx = classNames.bind(Stylest);
 function SliderMovie(props) {
@@ -22,7 +23,7 @@ function SliderMovie(props) {
         slidesToScroll = 5,
         width,
     } = props;
-    const { data } = useApiGetCategory(API_ENDPOINTS.SLIDER);
+    const { data, isLoading } = useApiGetCategory(API_ENDPOINTS.SLIDER);
 
     const [, dispatch] = useContext(ContextFilm);
     const callbackFunction = (childData) => {
@@ -48,6 +49,11 @@ function SliderMovie(props) {
                     <FontAwesomeIcon icon={faAngleLeft} />
                 </div>
 
+                {isLoading && (
+                    <div style={{ padding: '0 10px 0 10px' }}>
+                        <SkeletonUi width={190} />
+                    </div>
+                )}
                 <Slider ref={ref} {...settingsNoModules}>
                     {data?.map((movie) => (
                         <MoiveItem

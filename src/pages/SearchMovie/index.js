@@ -11,13 +11,14 @@ import styles from '../pages.module.scss';
 import { useParams } from 'react-router-dom';
 import { useSearchMovie } from '~/hooks/useSearchMovie';
 import Pagination from '~/components/Layout/components/Pagination/Pagination';
+import { SkeletonUi } from '~/components/Layout/components/Skeleton';
 
 const cx = classNames.bind(styles);
 function SearchMovie() {
     const { key } = useParams();
     const [page, setPage] = useState(1);
 
-    const { data, totalMovie } = useSearchMovie(key, page, 2021);
+    const { data, totalMovie, isLoading } = useSearchMovie(key, page, 2021);
     const [, dispatch] = useContext(ContextFilm);
     function handlePageChange(page) {
         setPage(page);
@@ -39,6 +40,14 @@ function SearchMovie() {
                 <div className={cx('container')}>
                     <div className={cx('content')}>
                         <div className={cx('list-movie')}>
+                            {isLoading && (
+                                <>
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                </>
+                            )}
                             {data?.map((movie) => (
                                 <MoiveItem
                                     parentCallback={callbackFunction}

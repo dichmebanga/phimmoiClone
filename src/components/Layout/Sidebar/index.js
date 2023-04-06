@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
+import { SkeletonSidebar } from '../components/Skeleton';
 import styles from './Sidebar.module.scss';
 import TrailerMovieItem from './TrailerMovieItem';
 
@@ -36,6 +37,7 @@ function Sidebar() {
                     <h4 className={cx('capital')}>Phim sắp chiếu</h4>
 
                     <div className={cx('list-film')}>
+                        {movieNew.isLoading && <SkeletonSidebar />}
                         {movieNew.data?.slice(0, 5).map((movie) => (
                             <TrailerMovieItem
                                 data={movie}
@@ -61,6 +63,12 @@ function Sidebar() {
                 </div>
 
                 <div className={cx('list-film')}>
+                    {movieTrending.isLoading && (
+                        <>
+                            <SkeletonSidebar height={40} width={280} />
+                            <SkeletonSidebar height={40} width={280} />
+                        </>
+                    )}
                     {movieTrending.data?.slice(0, 10).map((movie) => (
                         <div onClick={() => callbackFunction(movie.slug)} key={movie._id} className={cx('list')}>
                             <span className={cx('number-rank')}>{count++}</span>

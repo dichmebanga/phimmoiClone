@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Iframe from 'react-iframe';
 import { Link, useParams } from 'react-router-dom';
 import IntroMovie from '~/components/Layout/components/IntroMovie/IntroMovie';
+import { SkeletonDetail } from '~/components/Layout/components/Skeleton';
 import SliderMovie from '~/components/Layout/components/SliderMovie';
 import StarRating from '~/components/Layout/components/StarRating/StarRating';
 import TagMovie from '~/components/Layout/components/TagMovie/TagMovie';
@@ -17,7 +18,7 @@ const cx = classNames.bind(styles);
 
 function WatchingMovie() {
     const { film } = useParams();
-    const { data, episode, watchMovie, name, intro } = useGetDetailMovie(film);
+    const { data, episode, watchMovie, name, intro, isLoading } = useGetDetailMovie(film);
     const [watchingMovie, setWatchingMovie] = useState('');
     useEffect(() => {
         setWatchingMovie(watchMovie);
@@ -30,7 +31,15 @@ function WatchingMovie() {
             <div className={cx('wrapper')}>
                 <Header />
                 <IntroMovie contents={{ name, intro }} />
-                <Iframe width="980px" height="540px" src={watchingMovie} loading="eager" styles={{ border: 'none' }} />
+                {(isLoading && <SkeletonDetail width={980} height={540} />) || (
+                    <Iframe
+                        width="980px"
+                        height="540px"
+                        src={watchingMovie || data.trailer_url}
+                        loading="eager"
+                        styles={{ border: 'none' }}
+                    />
+                )}
 
                 <div className={cx('episode')}>
                     {episode?.map((movie) => (

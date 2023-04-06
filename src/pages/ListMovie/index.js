@@ -12,6 +12,7 @@ import Pagination from '~/components/Layout/components/Pagination/Pagination';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import styles from '../pages.module.scss';
+import { SkeletonUi } from '~/components/Layout/components/Skeleton';
 
 const cx = classNames.bind(styles);
 function ListMovie() {
@@ -22,7 +23,7 @@ function ListMovie() {
     const [page, setPage] = useState(1);
     useEffect(() => setPage(pages), [pages]);
     const navigate = useNavigate();
-    const { data, totalMovie } = useApiGetCategory(`${API_ENDPOINTS.CATEGORIES}/${category}?page=${page}`);
+    const { data, totalMovie, isLoading } = useApiGetCategory(`${API_ENDPOINTS.CATEGORIES}/${category}?page=${page}`);
     const [, dispatch] = useContext(ContextFilm);
 
     function handlePageChange(newPage) {
@@ -49,6 +50,14 @@ function ListMovie() {
                 <div className={cx('container')}>
                     <div className={cx('content')}>
                         <div className={cx('list-movie')}>
+                            {isLoading && (
+                                <>
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                    <SkeletonUi />
+                                </>
+                            )}
                             {data?.map((movie) => (
                                 <MoiveItem
                                     parentCallback={callbackFunction}
