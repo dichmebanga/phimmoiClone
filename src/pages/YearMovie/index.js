@@ -1,27 +1,36 @@
 import classNames from 'classnames/bind';
+import { useContext, useEffect, useState } from 'react';
 import IntroMovie from '~/components/Layout/components/IntroMovie/IntroMovie';
 import MoiveItem from '~/components/Layout/components/MoiveItem/MoiveItem';
 import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
 import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
-import { useContext, useState } from 'react';
-import styles from '../pages.module.scss';
 
-import { useParams } from 'react-router-dom';
-import { useSearchMovie } from '~/hooks/useSearchMovie';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Pagination from '~/components/Layout/components/Pagination/Pagination';
+import { useApiGetCategory } from '~/hooks/useApiGetCategory';
+import { API_ENDPOINTS } from '~/utils/apiClient';
+import styles from '../pages.module.scss';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
 
 const cx = classNames.bind(styles);
-function SearchMovie() {
-    const { key } = useParams();
+function YearMovie() {
+    const { year } = useParams();
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const pages = searchParams.get('page');
     const [page, setPage] = useState(1);
-
-    const { data, totalMovie, isLoading } = useSearchMovie(key, page);
+    useEffect(() => setPage(pages), [pages]);
+    const navigate = useNavigate();
+    const { data, totalMovie, isLoading } = useApiGetCategory(API_ENDPOINTS.NEW_UPDATE, page, year);
     const [, dispatch] = useContext(ContextFilm);
-    function handlePageChange(page) {
-        setPage(page);
+    function handlePageChange(newPage) {
+        setPage(newPage);
+        searchParams.set('page', newPage);
+        navigate({
+            search: searchParams.toString(),
+        });
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
@@ -35,7 +44,7 @@ function SearchMovie() {
         <>
             <div className={cx('wrapper')}>
                 <Header />
-                <IntroMovie contents={{ name: `KẾT QUẢ TÌM KIẾM: "${key}"` }} />
+                <IntroMovie contents={{ name: `/ PHIM ${year}` }} />
 
                 <div className={cx('container')}>
                     <div className={cx('content')}>
@@ -68,4 +77,4 @@ function SearchMovie() {
     );
 }
 
-export default SearchMovie;
+export default YearMovie;

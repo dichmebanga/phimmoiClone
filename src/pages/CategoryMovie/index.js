@@ -30,9 +30,8 @@ function CategoryMovie() {
         if (category === 'PHIM VIETSUB') setCategoryMovie(API_ENDPOINTS.VIETSUB);
         if (category === 'PHIM MỚI') setCategoryMovie(API_ENDPOINTS.NEW);
     }, [category]);
-    const { data, totalMovie, isLoading } = useApiGetCategory(`${categoryMovie}?page=${page}`);
+    const { data, totalMovie, isLoading } = useApiGetCategory(categoryMovie, page);
     const [, dispatch] = useContext(ContextFilm);
-
     function handlePageChange(newPage) {
         setPage(newPage);
         searchParams.set('page', newPage);

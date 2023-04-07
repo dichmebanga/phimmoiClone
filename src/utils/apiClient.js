@@ -14,4 +14,5 @@ export const API_ENDPOINTS = {
     CATEGORIES: '/v1/api/the-loai',
     DETAIL_MOVIE: 'v1/api/phim/',
     SEARCH: 'v1/api/tim-kiem?',
+    NEW_UPDATE: '/v1/api/danh-sach/phim-moi',
 };

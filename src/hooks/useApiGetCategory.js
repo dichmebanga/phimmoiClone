@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { axiosInstance } from '~/utils/axiosInStance';
 
-export const useApiGetCategory = (endpoint, param) => {
+export const useApiGetCategory = (endpoint, page, year) => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [totalMovie, setTotalMovie] = useState('');
@@ -10,7 +10,9 @@ export const useApiGetCategory = (endpoint, param) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosInstance.get(endpoint);
+                const response = await axiosInstance.get(endpoint, {
+                    params: { year: year, page: page },
+                });
                 setData(response.data.data.items);
                 setTotalMovie(response.data.data.params?.pagination);
             } catch (error) {
@@ -21,7 +23,7 @@ export const useApiGetCategory = (endpoint, param) => {
         };
 
         fetchData();
-    }, [endpoint, param]);
+    }, [endpoint, year, page]);
 
     return { data, isLoading, totalMovie };
 };

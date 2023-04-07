@@ -23,7 +23,7 @@ function ListMovie() {
     const [page, setPage] = useState(1);
     useEffect(() => setPage(pages), [pages]);
     const navigate = useNavigate();
-    const { data, totalMovie, isLoading } = useApiGetCategory(`${API_ENDPOINTS.CATEGORIES}/${category}?page=${page}`);
+    const { data, totalMovie, isLoading } = useApiGetCategory(`${API_ENDPOINTS.CATEGORIES}/${category}`, page);
     const [, dispatch] = useContext(ContextFilm);
 
     function handlePageChange(newPage) {
