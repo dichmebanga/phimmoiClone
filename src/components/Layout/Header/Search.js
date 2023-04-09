@@ -1,43 +1,25 @@
 import classNames from 'classnames/bind';
 import Stylest from './Header.module.scss';
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import FilmItem from '../components/FilmItem';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
-import useDebounce from '~/hooks/useDebounce';
-import { axiosInstance } from '~/utils/axiosInStance';
-import { API_ENDPOINTS } from '~/utils/apiClient';
+
+import { useSearch } from '~/hooks/useSearch';
 import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(Stylest);
 function Search() {
     const [searchValue, setSearchValue] = useState('');
-    const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(false);
+
+    const searchResult = useSearch(searchValue);
+
     const inputRef = useRef();
-    const debouncedValue = useDebounce(searchValue, 500);
-    useEffect(() => {
-        if (!debouncedValue.trim()) {
-            setSearchResult([]);
-            return;
-        }
-        const fetchApi = async () => {
-            try {
-                const response = await axiosInstance.get(API_ENDPOINTS.SEARCH + 'keyword=' + debouncedValue);
-                const result = response.data.data.items.slice(0, 6);
-                console.log('response', response);
-                setSearchResult(result);
-            } catch (error) {
-                console.log('error', error);
-            }
-        };
 
-        fetchApi();
-    }, [debouncedValue]);
-
-    const handleHideResult = () => {
-        setShowResult(false);
+    const navigate = useNavigate();
+    const handleDataSearch = () => {
+        navigate(`/searchMovie/${searchValue}`);
     };
 
     const handleChange = (e) => {
@@ -55,14 +37,8 @@ function Search() {
         }
     };
 
-    const [, dispatch] = useContext(ContextFilm);
-
-    const callbackFunction = (childData) => {
-        dispatch(setSlugMovie(childData));
-    };
-    const navigate = useNavigate();
-    const handleDataSearch = () => {
-        navigate(`/searchMovie/${searchValue}`);
+    const handleHideResult = () => {
+        setShowResult(false);
     };
 
     return (
@@ -82,12 +58,7 @@ function Search() {
                                     <strong>Phim</strong>
                                 </li>
                                 {searchResult?.map((item) => (
-                                    <FilmItem
-                                        key={item._id}
-                                        parentCallback={callbackFunction}
-                                        slug={item.slug}
-                                        data={item}
-                                    />
+                                    <FilmItem key={item._id} slug={item.slug} data={item} />
                                 ))}
 
                                 <li className={cx('movie-title', 'movie-list-end')} onClick={handleDataSearch}>

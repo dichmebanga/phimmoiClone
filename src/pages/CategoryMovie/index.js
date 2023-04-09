@@ -4,13 +4,12 @@ import MoiveItem from '~/components/Layout/components/MoiveItem/MoiveItem';
 import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../pages.module.scss';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import Pagination from '~/components/Layout/components/Pagination/Pagination';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
-import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
 const cx = classNames.bind(styles);
 function CategoryMovie() {
@@ -18,6 +17,7 @@ function CategoryMovie() {
     const { category } = useParams();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
+
     const pages = searchParams.get('page');
     const [page, setPage] = useState(1);
     useEffect(() => setPage(pages), [pages]);
@@ -31,7 +31,6 @@ function CategoryMovie() {
         if (category === 'PHIM MỚI') setCategoryMovie(API_ENDPOINTS.NEW);
     }, [category]);
     const { data, totalMovie, isLoading } = useApiGetCategory(categoryMovie, page);
-    const [, dispatch] = useContext(ContextFilm);
     function handlePageChange(newPage) {
         setPage(newPage);
         searchParams.set('page', newPage);
@@ -44,9 +43,6 @@ function CategoryMovie() {
         });
     }
 
-    const callbackFunction = (childData) => {
-        dispatch(setSlugMovie(childData));
-    };
     return (
         <>
             <div className={cx('wrapper')}>
@@ -65,13 +61,7 @@ function CategoryMovie() {
                                 </>
                             )}
                             {data?.map((movie) => (
-                                <MoiveItem
-                                    parentCallback={callbackFunction}
-                                    slug={movie.slug}
-                                    key={movie._id}
-                                    data={movie}
-                                    hide={true}
-                                />
+                                <MoiveItem slug={movie.slug} key={movie._id} data={movie} hide={true} />
                             ))}
                         </div>
                         <Pagination data={totalMovie.totalItems} itemsPerPage={24} onChange={handlePageChange} />

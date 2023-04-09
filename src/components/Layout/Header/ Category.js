@@ -27,7 +27,11 @@ function Category() {
                         <div className={cx('category')} tabIndex="-1" {...attrs}>
                             <Popper>
                                 {categories?.map((category) => (
-                                    <Link to={`/listMovie/${category.slug}`} key={category._id} className={cx('item')}>
+                                    <Link
+                                        to={{ pathname: `/listMovie/${category.slug}`, state: { category } }}
+                                        key={category._id}
+                                        className={cx('item')}
+                                    >
                                         <p>{category.name}</p>
                                     </Link>
                                 ))}
@@ -47,7 +51,11 @@ function Category() {
                         <div className={cx('country')} tabIndex="-1" {...attrs}>
                             <Popper>
                                 {countries?.map((country) => (
-                                    <Link to={`/countries/${country.slug}`} key={country._id} className={cx('item')}>
+                                    <Link
+                                        to={{ pathname: `/countries/${country.slug}`, state: country }}
+                                        key={country._id}
+                                        className={cx('item')}
+                                    >
                                         <p>{country.name}</p>
                                     </Link>
                                 ))}

@@ -4,8 +4,7 @@ import MoiveItem from '~/components/Layout/components/MoiveItem/MoiveItem';
 import Footer from '~/components/Layout/Footer/Footer';
 import Header from '~/components/Layout/Header';
 import Sidebar from '~/components/Layout/Sidebar';
-import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import styles from '../pages.module.scss';
 
 import { useParams } from 'react-router-dom';
@@ -19,7 +18,6 @@ function SearchMovie() {
     const [page, setPage] = useState(1);
 
     const { data, totalMovie, isLoading } = useSearchMovie(key, page);
-    const [, dispatch] = useContext(ContextFilm);
     function handlePageChange(page) {
         setPage(page);
         window.scrollTo({
@@ -28,9 +26,6 @@ function SearchMovie() {
         });
     }
 
-    const callbackFunction = (childData) => {
-        dispatch(setSlugMovie(childData));
-    };
     return (
         <>
             <div className={cx('wrapper')}>
@@ -49,13 +44,7 @@ function SearchMovie() {
                                 </>
                             )}
                             {data?.map((movie) => (
-                                <MoiveItem
-                                    parentCallback={callbackFunction}
-                                    slug={movie.slug}
-                                    key={movie._id}
-                                    data={movie}
-                                    hide={true}
-                                />
+                                <MoiveItem slug={movie.slug} key={movie._id} data={movie} hide={true} />
                             ))}
                         </div>
                         <Pagination data={totalMovie.totalItems} itemsPerPage={24} onChange={handlePageChange} />

@@ -4,12 +4,9 @@ import Stylest from './MoiveItem.module.scss';
 const cx = classNames.bind(Stylest);
 
 function MoiveItem({ hide = false, slug, parentCallback, data }) {
-    const handleClickSlug = () => {
-        parentCallback(slug);
-    };
     return (
         <Link to={`/detailMovie/${slug}`}>
-            <div onClick={handleClickSlug} className={cx('item', `${hide && 'item-list'}`)}>
+            <div className={cx('item', `${hide && 'item-list'}`)}>
                 <span className={cx('lable')}>{data.episode_current || 'Full'}</span>
                 <img
                     className={cx('img', `${hide && 'img-list'}`)}

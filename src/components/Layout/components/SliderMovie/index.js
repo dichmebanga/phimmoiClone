@@ -5,9 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useContext, useRef } from 'react';
+import { useRef } from 'react';
 import MoiveItem from '../MoiveItem/MoiveItem';
-import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
@@ -25,10 +24,6 @@ function SliderMovie(props) {
     } = props;
     const { data, isLoading } = useApiGetCategory(API_ENDPOINTS.SLIDER);
 
-    const [, dispatch] = useContext(ContextFilm);
-    const callbackFunction = (childData) => {
-        dispatch(setSlugMovie(childData));
-    };
     const ref = useRef(null);
     let settingsNoModules = {
         arrows: false,
@@ -59,7 +54,7 @@ function SliderMovie(props) {
                         <MoiveItem
                             data={movie}
                             key={movie._id}
-                            parentCallback={callbackFunction}
+                            // parentCallback={callbackFunction}
                             slug={movie.slug}
                             hide={hide}
                         />

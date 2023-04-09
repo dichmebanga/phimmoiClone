@@ -1,30 +1,48 @@
 import classNames from 'classnames/bind';
 import MoiveItem from '../components/MoiveItem/MoiveItem';
 import Stylest from './Content.module.scss';
-import { useState, useContext } from 'react';
-import { ContextFilm, setSlugMovie } from '~/context/contextSlug';
-import { useApiGetCategory } from '~/hooks/useApiGetCategory';
-import { API_ENDPOINTS } from '~/utils/apiClient';
+import { useState, useEffect } from 'react';
 import { SkeletonUi } from '../components/Skeleton';
+import { useGetCartoon } from '~/hooks/useGetCartoon';
+import { useGetTVShows } from '~/hooks/useGetTVShows';
+import { useGetCompelete } from '~/hooks/useGetCompelete';
+import { useGetSeries } from '~/hooks/useGetSeries';
+import { useGetTrending } from '~/hooks/useGetTrending';
 const cx = classNames.bind(Stylest);
 
 function Content() {
-    const [endPoint, setEndPoint] = useState(API_ENDPOINTS.SERIES);
-    const movieSeries = useApiGetCategory(endPoint);
-    const movieCartoon = useApiGetCategory(API_ENDPOINTS.CARTOON);
-    const movieTvShows = useApiGetCategory(API_ENDPOINTS.TVSHOWS);
+    const { seriesMovie, seriesLoading } = useGetSeries();
+    const { compeleteMovie, compeleteLoading } = useGetCompelete();
+    const { trendingMovie, trendingLoading } = useGetTrending();
+
+    const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const movieCartoon = useGetCartoon();
+    const movieTvShows = useGetTVShows();
     const [active, setActive] = useState('Phim Bộ Mới Cập Nhật');
-    const [, dispatch] = useContext(ContextFilm);
-    const callbackFunction = (childData) => {
-        dispatch(setSlugMovie(childData));
-    };
+
     const CategoryFilm = ['Phim Bộ Mới Cập Nhật', 'Phim Lẻ Mới Cập Nhật', 'Phim Đã Hoàn Thành'];
+
+    useEffect(() => {
+        setCategories(seriesMovie);
+        setIsLoading(seriesLoading);
+    }, [seriesMovie, seriesLoading]);
+
     const handleClick = (film) => {
         setActive(film);
-        if (film === 'Phim Bộ Mới Cập Nhật') setEndPoint(API_ENDPOINTS.SERIES);
-        if (film === 'Phim Lẻ Mới Cập Nhật') setEndPoint(API_ENDPOINTS.TRENDING);
-        if (film === 'Phim Đã Hoàn Thành') setEndPoint(API_ENDPOINTS.COMPELETE);
+        if (film === 'Phim Bộ Mới Cập Nhật') {
+            setCategories(seriesMovie);
+            setIsLoading(seriesLoading);
+        } else if (film === 'Phim Lẻ Mới Cập Nhật') {
+            setCategories(trendingMovie);
+            setIsLoading(trendingLoading);
+        } else if (film === 'Phim Đã Hoàn Thành') {
+            setCategories(compeleteMovie);
+            setIsLoading(compeleteLoading);
+        }
     };
+
     return (
         <>
             <div className={cx('wrapper')}>
@@ -41,23 +59,15 @@ function Content() {
                 </div>
 
                 <div className={cx('list')}>
-                    {(movieSeries.isLoading && (
+                    {(isLoading && (
                         <>
                             <SkeletonUi /> <SkeletonUi />
                             <SkeletonUi />
                         </>
                     )) ||
-                        movieSeries.data
+                        categories
                             ?.slice(0, 16)
-                            .map((movie) => (
-                                <MoiveItem
-                                    parentCallback={callbackFunction}
-                                    slug={movie.slug}
-                                    key={movie._id}
-                                    data={movie}
-                                    hide={true}
-                                />
-                            ))}
+                            .map((movie) => <MoiveItem slug={movie.slug} key={movie._id} data={movie} hide={true} />)}
                 </div>
 
                 <div className={cx('title')}>
@@ -72,15 +82,7 @@ function Content() {
                     )) ||
                         movieCartoon.data
                             ?.slice(0, 16)
-                            .map((movie) => (
-                                <MoiveItem
-                                    parentCallback={callbackFunction}
-                                    key={movie._id}
-                                    data={movie}
-                                    slug={movie.slug}
-                                    hide={true}
-                                />
-                            ))}
+                            .map((movie) => <MoiveItem key={movie._id} data={movie} slug={movie.slug} hide={true} />)}
                 </div>
 
                 <div className={cx('title')}>
@@ -94,15 +96,7 @@ function Content() {
                     )) ||
                         movieTvShows.data
                             ?.slice(0, 16)
-                            .map((movie) => (
-                                <MoiveItem
-                                    key={movie._id}
-                                    parentCallback={callbackFunction}
-                                    data={movie}
-                                    slug={movie.slug}
-                                    hide={true}
-                                />
-                            ))}
+                            .map((movie) => <MoiveItem key={movie._id} data={movie} slug={movie.slug} hide={true} />)}
                 </div>
             </div>
         </>
