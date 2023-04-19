@@ -12,6 +12,7 @@ import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import styles from '../pages.module.scss';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
+import SearchForm from '~/components/Layout/components/SearchForm/SearchForm';
 
 const cx = classNames.bind(styles);
 function ListMovie() {
@@ -41,9 +42,9 @@ function ListMovie() {
             <div className={cx('wrapper')}>
                 <Header />
                 <IntroMovie contents={{ name: ` / ${category}` }} />
-
                 <div className={cx('container')}>
                     <div className={cx('content')}>
+                        <SearchForm />
                         <div className={cx('list-movie')}>
                             {isLoading && (
                                 <>

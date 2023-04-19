@@ -11,6 +11,7 @@ import Pagination from '~/components/Layout/components/Pagination/Pagination';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
+import SearchForm from '~/components/Layout/components/SearchForm/SearchForm';
 const cx = classNames.bind(styles);
 function CategoryMovie() {
     const [categoryMovie, setCategoryMovie] = useState(null);
@@ -51,6 +52,8 @@ function CategoryMovie() {
 
                 <div className={cx('container')}>
                     <div className={cx('content')}>
+                        <SearchForm />
+
                         <div className={cx('list-movie')}>
                             {isLoading && (
                                 <>
