@@ -43,6 +43,10 @@ function Content() {
         }
     };
 
+    const seeAllMovieClick = () => {
+        console.log('vao day')
+    };
+
     return (
         <>
             <div className={cx('wrapper')}>
@@ -56,6 +60,9 @@ function Content() {
                             {film}
                         </p>
                     ))}
+                    <div className={cx('seeall')}>
+                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
+                    </div>
                 </div>
 
                 <div className={cx('list')}>
@@ -72,6 +79,9 @@ function Content() {
 
                 <div className={cx('title')}>
                     <p className={cx('tab', `active`)}>Phim Hoạt Hình</p>
+                    <div className={cx('seeall')}>
+                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
+                    </div>
                 </div>
 
                 <div className={cx('list')}>
@@ -87,6 +97,9 @@ function Content() {
 
                 <div className={cx('title')}>
                     <p className={cx('tab', `active`)}>Được Yêu Thích</p>
+                    <div className={cx('seeall')}>
+                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
+                    </div>
                 </div>
                 <div className={cx('list')}>
                     {(movieTvShows.isLoading && (

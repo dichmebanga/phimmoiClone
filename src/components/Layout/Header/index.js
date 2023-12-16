@@ -14,7 +14,7 @@ function Header() {
         <div className={cx('wrapper')}>
             <div className={cx('container')}>
                 <Link to={'/'}>
-                    <img alt="MotPhimTV" title="Mọt phim TV" src={images.logo} />
+                    <img alt="MotPhimTV" height={70} width={220} title="Phim Mới" src={"https://phimmoichillg.net/dev/images/logo.png"} />
                 </Link>
 
                 <div className={cx('header')}>

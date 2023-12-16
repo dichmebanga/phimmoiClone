@@ -8,7 +8,7 @@ function TrailerMovieItem({ slug, data }) {
     return (
         <div className={cx('film-item')}>
             <Link to={`/detailMovie/${slug}`}>
-                <img alt="" className={cx('avatar')} src={`http://img.ophim1.cc/uploads/movies/${data.thumb_url}`} />
+                <img alt="" className={cx('avatar')} src={`https://img.hiephanhthienha.com/uploads/movies/${data.thumb_url}`} />
             </Link>
             <Link to={`/detailMovie/${slug}`} className={cx('name')}>
                 {data.name}

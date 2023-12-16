@@ -13,7 +13,7 @@ function Sidebar() {
     const [page, setPage] = useState(1);
     const movieNew = useApiGetCategory(API_ENDPOINTS.NEW);
     const movieTrending = useApiGetCategory(`${API_ENDPOINTS.TRENDING}?page=${page}`);
-
+    
     const Date = ['Ngày', 'Tuần', 'Tháng'];
     const [active, setActive] = useState('Ngày');
     let count = 1;

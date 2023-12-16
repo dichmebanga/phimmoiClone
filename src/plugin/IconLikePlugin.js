@@ -31,7 +31,7 @@ function IconLikePlugin() {
     return (
         <div
             className="fb-like"
-            data-href="https://www.facebook.com/vycutepro/posts/pfbid02XZqshdTZKhy5E924oiFe3yPBg1W7ddgSPCfmgWdKUP9AuSwkWSBNdF6iKUYCboA5l"
+            data-href=""
             data-width="120px"
             data-layout="button_count"
             data-action="like"
