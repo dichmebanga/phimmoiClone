@@ -8,7 +8,7 @@ function IntroMovie({ contents }) {
         <div className={cx('wrapper')}>
             <ul className={cx('movie')}>
                 <Link to="/">
-                    <li>Mọt phim </li>
+                    <li>Phim Mới</li>
                 </Link>
 
                 <li>{content}</li>

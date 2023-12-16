@@ -1,5 +1,5 @@
 .item {
-    margin: 0 10px;
+    margin: 15px;
     position: relative;
     width: 175px;
     float: left;
@@ -29,6 +29,7 @@
         background: #e74c3c;
         border-bottom: 2px solid #bb3c2f;
         top: 5px;
+        left: 15px;
         z-index: 2;
         border-radius: 0;
         font-weight: normal;
@@ -54,11 +55,12 @@
         vertical-align: middle;
         position: relative;
         overflow: hidden;
+        margin: 15px;
     }
     .title {
         position: absolute;
         bottom: 0;
-        left: 0;
+        left: 15px;
         right: 0;
         background: var(--bgDetaliMovie);
         text-align: center;

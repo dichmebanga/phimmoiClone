@@ -17,7 +17,7 @@ function Category() {
     const years = ['2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
     return (
         <div className={cx('menu-list')}>
-            <Link className={cx('logoImages')} to={'/'}>
+            <Link to={'/'}>
                 <img
                     alt="MotPhimTV"
                     height={40}
@@ -28,7 +28,7 @@ function Category() {
             </Link>
 
             <Link className={cx('list', 'active')} to={'/'}>
-                TRANG CHỦ
+                PHIMMOI
             </Link>
 
             <div>
