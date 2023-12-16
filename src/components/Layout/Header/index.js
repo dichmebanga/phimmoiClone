@@ -12,34 +12,6 @@ const cx = classNames.bind(Stylest);
 function Header() {
     return (
         <div className={cx('wrapper')}>
-            <div className={cx('container')}>
-                <Link to={'/'}>
-                    <img alt="MotPhimTV" height={70} width={220} title="Phim Mới" src={"https://phimmoichillg.net/dev/images/logo.png"} />
-                </Link>
-
-                <div className={cx('header')}>
-                    <div className={cx('search')}>
-                        <Search />
-                        <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
-                        <p className={cx('suggest')}>Công cụ tìm kiếm phim.</p>
-                    </div>
-
-                    <div className={cx('user')}>
-                        <li className={cx('user-menu')}>
-                            <FontAwesomeIcon className={cx('user-menu-icon')} icon={faRightToBracket} />
-                            <p onClick={() => alert('Chức năng này đang cập nhật')}> Đăng nhập</p>
-                        </li>
-                        <li className={cx('user-menu')}>
-                            <FontAwesomeIcon className={cx('user-menu-icon')} icon={faUsers} />
-                            <p onClick={() => alert('Chức năng này đang cập nhật')}> Đăng ký </p>
-                        </li>
-                        <li className={cx('user-menu')}>
-                            <FontAwesomeIcon className={cx('user-menu-icon')} icon={faBookmark} />
-                            <p onClick={() => alert('Chức năng này đang cập nhật')}> Bookmark </p>
-                        </li>
-                    </div>
-                </div>
-            </div>
             <Category />
         </div>
     );

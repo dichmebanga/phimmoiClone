@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
+import Search from './Search';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faRightToBracket, faUsers } from '@fortawesome/free-solid-svg-icons';
 import Stylest from './Header.module.scss';
 
 const cx = classNames.bind(Stylest);
@@ -14,6 +17,16 @@ function Category() {
     const years = ['2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014'];
     return (
         <div className={cx('menu-list')}>
+            <Link className={cx('logoImages')} to={'/'}>
+                <img
+                    alt="MotPhimTV"
+                    height={40}
+                    width={150}
+                    title="Phim Mới"
+                    src={'https://phimmoichillg.net/dev/images/logo.png'}
+                />
+            </Link>
+
             <Link className={cx('list', 'active')} to={'/'}>
                 TRANG CHỦ
             </Link>
@@ -103,6 +116,8 @@ function Category() {
             <Link className={cx('list')} to={`/categoryMovie/TV SHOW`}>
                 TV SHOW
             </Link>
+
+            <Search />
         </div>
     );
 }
