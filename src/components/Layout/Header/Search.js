@@ -4,7 +4,8 @@ import React, { useRef, useState } from 'react';
 import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import FilmItem from '../components/FilmItem';
 import HeadlessTippy from '@tippyjs/react/headless';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faRightToBracket, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { useSearch } from '~/hooks/useSearch';
 import { useNavigate } from 'react-router-dom';
 
@@ -42,7 +43,7 @@ function Search() {
     };
 
     return (
-        <div>
+        <div className={cx('menu-list')}>
             <HeadlessTippy
                 interactive={true}
                 visible={showResult && searchResult.length > 0}
@@ -73,7 +74,7 @@ function Search() {
                 <input
                     className={cx('search-input')}
                     type="text"
-                    placeholder="V.d: tên phim, tên diễn viên..."
+                    placeholder="Tên phim, Tên diễn viên..."
                     spellCheck={false}
                     value={searchValue}
                     onChange={handleChange}
@@ -81,6 +82,7 @@ function Search() {
                     onFocus={() => setShowResult(true)}
                 />
             </HeadlessTippy>
+            <FontAwesomeIcon className={cx('search-icon')} icon={faMagnifyingGlass} />
         </div>
     );
 }
