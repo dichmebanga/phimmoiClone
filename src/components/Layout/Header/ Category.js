@@ -96,7 +96,7 @@ function Category() {
                         </div>
                     )}
                 >
-                    <div className={cx('list')}>PHIM MỚI </div>
+                    <div className={cx('list')}>PHIM MỚI MỚI </div>
                 </Tippy>
             </div>
             <Link className={cx('list')} to={`/categoryMovie/PHIM BỘ`}>
