@@ -21,7 +21,7 @@ function Category() {
                     height='40px'
                     width={160}
                     title="Phim Mới"
-                    src={'https://phimmoichillk.net/dev/images/logo.png'}
+                    src={'/logo.jpg'}
                 />
             </Link>
 
