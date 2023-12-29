@@ -5,8 +5,6 @@ import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import Search from './Search';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faRightToBracket, faUsers } from '@fortawesome/free-solid-svg-icons';
 import Stylest from './Header.module.scss';
 
 const cx = classNames.bind(Stylest);
@@ -19,11 +17,11 @@ function Category() {
         <div className={cx('menu-list')}>
             <Link to={'/'}>
                 <img
-                    alt="MotPhimTV"
-                    height={40}
-                    width={150}
+                    alt="Phimmoi"
+                    height='40px'
+                    width={160}
                     title="Phim Mới"
-                    src={'https://phimmoichillg.net/dev/images/logo.png'}
+                    src={'https://phimmoichillk.net/dev/images/logo.png'}
                 />
             </Link>
 

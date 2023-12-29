@@ -6,7 +6,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useRef } from 'react';
-import MoiveItem from '../MoiveItem/MoiveItem';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
@@ -52,7 +51,6 @@ function SliderMovie(props) {
                 )}
                 <Slider ref={ref} {...settingsNoModules}>
                     {data?.map((movie) => (
-                        // <MoiveItem data={movie} key={movie._id} slug={movie.slug} hide={hide} />
                         <Link to={`/detailMovie/${movie?.slug}`}>
                             <div className={cx('item', `${hide && 'item-list'}`)}>
                                 <span className={cx('lable')}>{movie.episode_current || 'Full'}</span>

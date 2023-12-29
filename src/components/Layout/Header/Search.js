@@ -5,7 +5,7 @@ import { Wrapper as Popper } from '~/components/Layout/components/Popper';
 import FilmItem from '../components/FilmItem';
 import HeadlessTippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faRightToBracket, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useSearch } from '~/hooks/useSearch';
 import { useNavigate } from 'react-router-dom';
 
