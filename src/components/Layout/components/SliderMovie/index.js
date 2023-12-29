@@ -6,10 +6,10 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useRef } from 'react';
-import MoiveItem from '../MoiveItem/MoiveItem';
 import { useApiGetCategory } from '~/hooks/useApiGetCategory';
 import { API_ENDPOINTS } from '~/utils/apiClient';
 import { SkeletonUi } from '~/components/Layout/components/Skeleton';
+import { Link } from 'react-router-dom';
 
 const cx = classNames.bind(Stylest);
 function SliderMovie(props) {
@@ -37,7 +37,7 @@ function SliderMovie(props) {
     return (
         <>
             <div className={cx('container')} style={{ display: `${toggle}` }}>
-                PHIM HOT
+                PHIM ĐỀ CỬ
             </div>
             <div className={cx('wrapper')} style={{ width: `${width}px` }}>
                 <div className={cx('slideshow-arrow', 'Slideshow_prev')} onClick={() => ref?.current?.slickPrev()}>
@@ -51,13 +51,18 @@ function SliderMovie(props) {
                 )}
                 <Slider ref={ref} {...settingsNoModules}>
                     {data?.map((movie) => (
-                        <MoiveItem
-                            data={movie}
-                            key={movie._id}
-                            // parentCallback={callbackFunction}
-                            slug={movie.slug}
-                            hide={hide}
-                        />
+                        <Link to={`/detailMovie/${movie?.slug}`}>
+                            <div className={cx('item', `${hide && 'item-list'}`)}>
+                                <span className={cx('lable')}>{movie.episode_current || 'Full'}</span>
+                                <img
+                                    className={cx('img', `${hide && 'img-list'}`)}
+                                    src={`https://img.hiephanhthienha.com/uploads/movies/${movie.thumb_url}`}
+                                    alt={'images'}
+                                />
+                                <i className={cx('icon-play')}></i>
+                                <p className={cx('title', `${hide && 'title-list'}`)}>{movie.name}</p>
+                            </div>
+                        </Link>
                     ))}
                 </Slider>
 

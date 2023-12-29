@@ -79,9 +79,6 @@
     color: var(--text);
 }
 
-.logoImages{
-}
-
 // css user menu
 .user {
     padding: 5px;
@@ -116,6 +113,7 @@
     display: flex;
     background: var(--bgSecondary);
     align-items: center;
+    cursor: pointer;
 }
 
 .list {

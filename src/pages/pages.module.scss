@@ -3,9 +3,10 @@
     flex-direction: column;
     align-items: center;
     background-color: #424242;
+    width: 100%;
 }
 .container {
-    width: 980px;
+    width: 90%;
     display: flex;
     margin-bottom: 39px;
 }
@@ -13,7 +14,7 @@
     flex: 1;
 }
 .list-movie {
-    width: 670px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;

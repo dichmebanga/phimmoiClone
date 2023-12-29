@@ -43,9 +43,15 @@ function Content() {
         }
     };
 
-    const seeAllMovieClick = () => {
-        console.log('vao day')
+    const seeAllMovieClick = (row) => {
+        if (row === 'Phim Bộ Mới Cập Nhật') {
+            return (window.location.href = '/categoryMovie/PHIM BỘ');
+        }
+        if (row === 'Phim Lẻ Mới Cập Nhật') {
+            return (window.location.href = '/categoryMovie/PHIM LẺ');
+        }
     };
+    console.log('activeactive', active);
 
     return (
         <>
@@ -61,7 +67,11 @@ function Content() {
                         </p>
                     ))}
                     <div className={cx('seeall')}>
-                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
+                        {active !== 'Phim Đã Hoàn Thành' && (
+                            <button className={cx('titlesee')} onClick={() => seeAllMovieClick(active)}>
+                                Xem tấc cả
+                            </button>
+                        )}
                     </div>
                 </div>
 
@@ -79,9 +89,6 @@ function Content() {
 
                 <div className={cx('title')}>
                     <p className={cx('tab', `active`)}>Phim Hoạt Hình</p>
-                    <div className={cx('seeall')}>
-                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
-                    </div>
                 </div>
 
                 <div className={cx('list')}>
@@ -97,9 +104,6 @@ function Content() {
 
                 <div className={cx('title')}>
                     <p className={cx('tab', `active`)}>Được Yêu Thích</p>
-                    <div className={cx('seeall')}>
-                        <button className={cx('titlesee')} onClick={seeAllMovieClick}>Xem tấc cả</button>
-                    </div>
                 </div>
                 <div className={cx('list')}>
                     {(movieTvShows.isLoading && (
